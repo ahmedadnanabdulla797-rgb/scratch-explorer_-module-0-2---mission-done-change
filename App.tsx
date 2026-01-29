@@ -100,38 +100,40 @@ const App: React.FC = () => {
       {(showConfetti || isQuestFinished) && <Confetti />}
       {showWelcome && <WelcomeModal onClose={() => { sounds.playPop(); setShowWelcome(false); }} />}
 
-  {isQuestFinished && (
+{isQuestFinished && (
   <div className="fixed inset-0 z-[300] bg-indigo-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-500 overflow-hidden">
-    {/* Centered Modal with specific width/height ratio */}
-    <div className="bg-white rounded-[2.5rem] p-8 w-[90%] max-w-[450px] aspect-[4/3] flex flex-col items-center justify-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-[4px] border-yellow-400 relative animate-in zoom-in duration-500">
+    {/* Updated to match the "Sprite Quest!" welcome modal dimensions */}
+    <div className="bg-white rounded-[3rem] p-10 w-[95%] max-w-[600px] flex flex-col items-center justify-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-[6px] border-yellow-400 relative animate-in zoom-in duration-500">
       
-      {/* Crown Icon */}
-      <div className="text-[60px] mb-2 drop-shadow-md leading-none">👑</div>
+      {/* Cat Icon to match welcome style */}
+      <div className="text-[80px] mb-4 drop-shadow-md leading-none">🐱</div>
       
-      {/* Sprite Master Title */}
-      <h2 className="text-3xl font-black text-indigo-950 mb-6 font-kids uppercase tracking-tight">
-        SPRITE MASTER!
+      {/* Title Styled like first interface */}
+      <h2 className="text-4xl font-black text-indigo-900 mb-2 font-kids uppercase tracking-tight">
+        Sprite Master!
       </h2>
       
-      {/* Final Stats Summary */}
-      <div className="flex gap-4 mb-8">
-        <div className="bg-indigo-50 px-4 py-2 rounded-xl border border-indigo-100 flex items-center gap-2">
-          <span className="text-xl">⭐</span>
-          <span className="text-xl font-black text-indigo-600">{stars}</span>
+      <p className="text-indigo-600 font-bold mb-6 text-lg">You built amazing games! 🎮</p>
+      
+      {/* Stats Summary */}
+      <div className="w-full flex flex-col gap-3 mb-8">
+        <div className="bg-yellow-50 p-4 rounded-2xl border-2 border-yellow-100 flex items-center justify-between">
+          <span className="font-black text-yellow-700">⭐ STARS EARNED:</span>
+          <span className="text-2xl font-black text-yellow-600">{stars}</span>
         </div>
-        <div className="bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-100 flex items-center gap-2">
-          <span className="text-xl">✅</span>
-          <span className="text-xl font-black text-emerald-600">{completed.size}</span>
+        <div className="bg-emerald-50 p-4 rounded-2xl border-2 border-emerald-100 flex items-center justify-between">
+          <span className="font-black text-emerald-700">✅ LEVELS DONE:</span>
+          <span className="text-2xl font-black text-emerald-600">{completed.size}</span>
         </div>
       </div>
 
-      {/* Start Over Button Styled like your image */}
+      {/* Start Over Button Styled like the "START QUEST!" button */}
       <button 
         onClick={restartQuest} 
-        className="bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 px-10 rounded-full shadow-[0_4px_0_0_#15803d] transition-all hover:translate-y-[2px] hover:shadow-none flex items-center gap-2 font-kids active:scale-95"
+        className="w-full bg-[#22c55e] hover:bg-[#16a34a] text-white py-5 rounded-[1.5rem] shadow-[0_8px_0_0_#15803d] transition-all hover:translate-y-[2px] hover:shadow-[0_4px_0_0_#15803d] flex items-center justify-center gap-3 font-kids active:scale-95"
       >
-        <span className="text-lg font-black uppercase tracking-wide">START OVER!</span>
-        <span className="text-lg">🔄</span>
+        <span className="text-2xl font-black uppercase tracking-wide">PLAY AGAIN!</span>
+        <span className="text-2xl">🚀</span>
       </button>
     </div>
   </div>
