@@ -73,14 +73,14 @@ const App: React.FC = () => {
     setTimeout(() => setShowConfetti(false), 3000);
   };
 
-  // Skip text-only intro levels by automatically completing them and moving to the next
+ // Skip text-only intro levels by automatically moving to the next
   useEffect(() => {
     if (currentLevel.type === 'content') {
       handleLevelUp();
-      // Small delay so the child sees the stars/confetti before moving on
+      // This moves to the next level in 0.1 seconds (very fast!)
       const timer = setTimeout(() => {
         nextLevel();
-      }, 1500);
+      }, 100); 
       return () => clearTimeout(timer);
     }
   }, [currentLevel.id]);
