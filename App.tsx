@@ -90,35 +90,38 @@ const App: React.FC = () => {
       {(showConfetti || isQuestFinished) && <Confetti />}
       {showWelcome && <WelcomeModal onClose={() => { sounds.playPop(); setShowWelcome(false); }} />}
 
-    {isQuestFinished && (
-  <div className="fixed inset-0 z-[300] bg-indigo-950/98 backdrop-blur-2xl flex items-center justify-center p-8 lg:p-16 animate-in fade-in duration-500 overflow-hidden">
-    <div className="bg-white rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-8 max-w-md w-full text-center shadow-[0_50px_100px_rgba(0,0,0,0.8)] border-[3px] lg:border-[6px] border-yellow-400 relative animate-in zoom-in duration-700 flex flex-col items-center">
-      <div className="text-[60px] lg:text-[80px] mb-2 lg:mb-3 animate-bounce drop-shadow-lg leading-none">👑</div>
-      <h2 className="text-2xl lg:text-4xl font-black text-indigo-950 mb-1 font-kids tracking-tight uppercase leading-tight">SPRITE MASTER!</h2>
+  {isQuestFinished && (
+  <div className="fixed inset-0 z-[300] bg-indigo-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-500 overflow-hidden">
+    {/* Centered Modal with specific width/height ratio */}
+    <div className="bg-white rounded-[2.5rem] p-8 w-[90%] max-w-[450px] aspect-[4/3] flex flex-col items-center justify-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-[4px] border-yellow-400 relative animate-in zoom-in duration-500">
       
-      {/* STATS GROUP */}
-      <div className="flex flex-col gap-2 w-full mt-4 mb-6">
-        {/* STAR POINTS */}
-        <div className="bg-indigo-50 px-6 py-3 rounded-2xl border-2 border-indigo-100 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">⭐</span>
-            <span className="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">Total Stars</span>
-          </div>
-          <span className="text-2xl font-black text-indigo-600 tabular-nums">{stars}</span>
+      {/* Crown Icon */}
+      <div className="text-[60px] mb-2 drop-shadow-md leading-none">👑</div>
+      
+      {/* Sprite Master Title */}
+      <h2 className="text-3xl font-black text-indigo-950 mb-6 font-kids uppercase tracking-tight">
+        SPRITE MASTER!
+      </h2>
+      
+      {/* Final Stats Summary */}
+      <div className="flex gap-4 mb-8">
+        <div className="bg-indigo-50 px-4 py-2 rounded-xl border border-indigo-100 flex items-center gap-2">
+          <span className="text-xl">⭐</span>
+          <span className="text-xl font-black text-indigo-600">{stars}</span>
         </div>
-
-        {/* PROGRESS */}
-        <div className="bg-emerald-50 px-6 py-3 rounded-2xl border-2 border-emerald-100 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">✅</span>
-            <span className="text-emerald-600/70 font-bold uppercase text-[10px] tracking-widest">Levels Done</span>
-          </div>
-          <span className="text-2xl font-black text-emerald-600 tabular-nums">{completed.size}</span>
+        <div className="bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-100 flex items-center gap-2">
+          <span className="text-xl">✅</span>
+          <span className="text-xl font-black text-emerald-600">{completed.size}</span>
         </div>
       </div>
 
-      <button onClick={restartQuest} className="bg-emerald-500 hover:bg-emerald-400 text-white py-3 lg:py-5 px-8 rounded-[1.75rem] shadow-[0_6px_0_0_#065f46] flex items-center gap-3 font-kids w-full justify-center">
-        <span className="text-xl font-black">PLAY AGAIN!</span> 🔄
+      {/* Start Over Button Styled like your image */}
+      <button 
+        onClick={restartQuest} 
+        className="bg-[#22c55e] hover:bg-[#16a34a] text-white py-3 px-10 rounded-full shadow-[0_4px_0_0_#15803d] transition-all hover:translate-y-[2px] hover:shadow-none flex items-center gap-2 font-kids active:scale-95"
+      >
+        <span className="text-lg font-black uppercase tracking-wide">START OVER!</span>
+        <span className="text-lg">🔄</span>
       </button>
     </div>
   </div>
