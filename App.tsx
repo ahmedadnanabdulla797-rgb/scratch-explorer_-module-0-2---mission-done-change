@@ -27,26 +27,36 @@ const App: React.FC = () => {
 
   const handleLevelUp = () => {
     if (!completed.has(currentLevel.id)) {
+      // 1. Immediate UI feedback (Stars and Sound)
       sounds.playFanfare();
       setStars(prev => prev + currentLevel.stars);
       setCompleted(prev => new Set(prev).add(currentLevel.id));
-      setShowConfetti(true);
-      setPulseStars(true);
+      
+      // 2. Delayed visual celebration to prevent frame drops
+      requestAnimationFrame(() => {
+        setShowConfetti(true);
+        setPulseStars(true);
+      });
+
+      // 3. Auto-clear effects
       setTimeout(() => setShowConfetti(false), 4000);
       setTimeout(() => setPulseStars(false), 1000);
     }
   };
 
   const nextLevel = () => {
-    sounds.playPop();
-    if (currentLevelIdx < currentModule.lessons.length - 1) {
-      setCurrentLevelIdx(prev => prev + 1);
-    } else if (currentModuleIdx < FULL_CURRICULUM.length - 1) {
-      setCurrentModuleIdx(prev => prev + 1);
-      setCurrentLevelIdx(0);
-    } else {
-      setIsQuestFinished(true);
-    }
+    // Small delay before switching levels prevents the "pop" lag
+    setTimeout(() => {
+      sounds.playPop();
+      if (currentLevelIdx < currentModule.lessons.length - 1) {
+        setCurrentLevelIdx(prev => prev + 1);
+      } else if (currentModuleIdx < FULL_CURRICULUM.length - 1) {
+        setCurrentModuleIdx(prev => prev + 1);
+        setCurrentLevelIdx(0);
+      } else {
+        setIsQuestFinished(true);
+      }
+    }, 100); 
   };
 
   const prevLevel = () => {
