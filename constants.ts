@@ -7,7 +7,7 @@ export const FULL_CURRICULUM: Module[] = [
     lessons: [
       {
         id: '1.2',
-        title: 'Level 1: Treasure Hunt', // Changed from Level 2 to Level 1
+        title: 'Level 1: Treasure Hunt', 
         description: 'Type the code to move the cat!',
         type: 'project',
         status: LessonStatus.AVAILABLE,
