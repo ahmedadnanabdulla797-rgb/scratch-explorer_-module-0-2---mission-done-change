@@ -139,11 +139,16 @@ const App: React.FC = () => {
               {currentModule.lessons.map((level, idx) => {
                 const isCurrent = currentLevelIdx === idx;
                 const isDone = completed.has(level.id);
+                // Extracting name from "Level X: Name"
+                const levelName = level.title.split(': ')[1] || level.title;
                 return (
-                  <button key={level.id} onClick={() => { sounds.playPop(); setCurrentLevelIdx(idx); }} className={`w-full p-2.5 rounded-xl transition-all border-b-2 flex items-center gap-2.5 ${isCurrent ? 'bg-yellow-400 border-yellow-600 shadow-md' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                    <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[9px] font-black shrink-0 ${isDone ? 'bg-emerald-500' : 'bg-white/10'}`}>
+                  <button key={level.id} onClick={() => { sounds.playPop(); setCurrentLevelIdx(idx); }} className={`w-full p-2.5 rounded-xl transition-all border-b-2 flex items-center gap-2.5 ${isCurrent ? 'bg-yellow-400 border-yellow-600 shadow-md translate-y-[-1px]' : 'bg-white/10 border-white/5 text-white hover:bg-white/20'}`}>
+                    <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-[9px] font-black shrink-0 ${isDone ? 'bg-emerald-500 text-white shadow-[0_1px_0_0_#065f46]' : isCurrent ? 'bg-indigo-900 text-yellow-400' : 'bg-white/10 text-white'}`}>
                       {isDone ? '✓' : idx + 1}
                     </div>
+                    <span className={`text-[9px] font-bold uppercase text-left leading-tight line-clamp-1 ${isCurrent ? 'text-indigo-900' : 'text-white'}`}>
+                      {levelName}
+                    </span>
                   </button>
                 );
               })}
