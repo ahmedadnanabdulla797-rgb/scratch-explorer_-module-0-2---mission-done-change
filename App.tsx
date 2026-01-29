@@ -155,7 +155,7 @@ const App: React.FC = () => {
 
         {/* TITLE */}
         <h1 className="text-sm font-black text-white uppercase tracking-tighter font-kids">
-          SPRITE QUEST PRO
+          SPRITE QUEST 
         </h1>
       </div>
     </div>
