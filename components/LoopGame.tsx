@@ -28,17 +28,25 @@ const start = async () => {
     
     setPlaying(true);
     setCurrentStep(0);
-
-    // FIXED: Using i < times ensures the loop runs exactly the number of times specified
+    
+    // Loop runs exactly the number of times in the 'times' variable
     for(let i = 0; i < times; i++) {
       setCurrentStep(i + 1);
       sounds.playJump();
-      // This delay matches the animation speed
-      await new Promise(r => setTimeout(r, 800));
+      
+      // If this is the VERY LAST jump, stop the animation early
+      // so the cat doesn't start a "bonus" jump
+      if (i === times - 1) {
+        // Wait for the jump to reach the peak, then turn off animation
+        await new Promise(r => setTimeout(r, 400)); 
+        setPlaying(false);
+        // Wait for the cat to land
+        await new Promise(r => setTimeout(r, 400));
+      } else {
+        // Normal jump wait
+        await new Promise(r => setTimeout(r, 800));
+      }
     }
-    
-    // IMPORTANT: Turn off playing IMMEDIATELY to stop the CSS animation
-    setPlaying(false);
     
     setDone(true);
     sounds.playSuccess();
