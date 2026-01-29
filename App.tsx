@@ -181,9 +181,7 @@ const App: React.FC = () => {
                     onNext={nextLevel} 
                  />
               ) : (
-                <div className="h-full flex items-center justify-center">
-                  <div className="animate-spin text-6xl">🌟</div>
-                </div>
+               <SpriteSimulator onWin={handleLevelUp} isCompleted={completed.has(currentLevel.id)} onNext={nextLevel} />
               )}
             </div>
           </div>
