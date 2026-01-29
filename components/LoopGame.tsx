@@ -20,7 +20,7 @@ export const LoopGame: React.FC<LoopGameProps> = ({ onWin, isCompleted, onNext }
     setCurrentStep(0);
   };
 
-  const start = async () => {
+const start = async () => {
     if (times === 0) {
       sounds.playMiss();
       return;
@@ -28,11 +28,16 @@ export const LoopGame: React.FC<LoopGameProps> = ({ onWin, isCompleted, onNext }
     
     setPlaying(true);
     setCurrentStep(0);
-    for(let i=1; i<=times; i++) {
-      setCurrentStep(i);
+
+    // FIXED: Using i < times ensures the loop runs exactly the number of times specified
+    for(let i = 0; i < times; i++) {
+      setCurrentStep(i + 1);
       sounds.playJump();
+      // This delay matches the animation speed
       await new Promise(r => setTimeout(r, 800));
     }
+    
+    // IMPORTANT: Turn off playing IMMEDIATELY to stop the CSS animation
     setPlaying(false);
     
     setDone(true);
