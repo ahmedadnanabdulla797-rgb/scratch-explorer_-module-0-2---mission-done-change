@@ -117,9 +117,9 @@ const start = async () => {
 
           <div className="relative mb-10 lg:mb-14 flex flex-col items-center justify-center w-full z-10">
             <div className={`w-16 lg:w-24 h-3 bg-blue-400/5 rounded-full blur-xl transition-all duration-[400ms] ${playing ? 'scale-x-150 opacity-0' : 'scale-100 opacity-40'}`}></div>
-            <div className={`absolute bottom-1 text-[70px] lg:text-[110px] leading-none select-none filter drop-shadow(0 0 10px rgba(59,130,246,0.1)) transition-all duration-[400ms] ${playing ? 'animate-loop-jump' : ''}`}>
-               <span className="inline-block transform">🐱</span>
-            </div>
+            <div className={`absolute bottom-1 text-[70px] lg:text-[110px] leading-none select-none filter drop-shadow(0 0 10px rgba(59,130,246,0.1)) transition-all duration-[400ms] ${playing ? 'animate-loop-jump' : 'transform-none'}`}>
+   <span className="inline-block">🐱</span>
+</div>
           </div>
           
           {done && !playing && (
