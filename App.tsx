@@ -90,17 +90,25 @@ const App: React.FC = () => {
       {(showConfetti || isQuestFinished) && <Confetti />}
       {showWelcome && <WelcomeModal onClose={() => { sounds.playPop(); setShowWelcome(false); }} />}
 
-      {isQuestFinished && (
-        <div className="fixed inset-0 z-[300] bg-indigo-950/98 backdrop-blur-2xl flex items-center justify-center p-8 lg:p-16 animate-in fade-in duration-500 overflow-hidden">
-          <div className="bg-white rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-8 max-w-md w-full text-center shadow-[0_50px_100px_rgba(0,0,0,0.8)] border-[3px] lg:border-[6px] border-yellow-400 relative animate-in zoom-in duration-700 flex flex-col items-center">
-            <div className="text-[60px] lg:text-[80px] mb-2 lg:mb-3 animate-bounce drop-shadow-lg leading-none">👑</div>
-            <h2 className="text-2xl lg:text-4xl font-black text-indigo-950 mb-1 font-kids tracking-tight uppercase leading-tight">SPRITE MASTER!</h2>
-            <button onClick={restartQuest} className="mt-6 bg-emerald-500 hover:bg-emerald-400 text-white py-3 lg:py-5 px-8 rounded-[1.75rem] shadow-[0_6px_0_0_#065f46] flex items-center gap-3 font-kids">
-              <span className="text-xl font-black">START OVER!</span> 🔄
-            </button>
-          </div>
-        </div>
-      )}
+     {isQuestFinished && (
+  <div className="fixed inset-0 z-[300] bg-indigo-950/98 backdrop-blur-2xl flex items-center justify-center p-8 lg:p-16 animate-in fade-in duration-500 overflow-hidden">
+    <div className="bg-white rounded-[2rem] lg:rounded-[3rem] p-6 lg:p-8 max-w-md w-full text-center shadow-[0_50px_100px_rgba(0,0,0,0.8)] border-[3px] lg:border-[6px] border-yellow-400 relative animate-in zoom-in duration-700 flex flex-col items-center">
+      <div className="text-[60px] lg:text-[80px] mb-2 lg:mb-3 animate-bounce drop-shadow-lg leading-none">👑</div>
+      <h2 className="text-2xl lg:text-4xl font-black text-indigo-950 mb-1 font-kids tracking-tight uppercase leading-tight">SPRITE MASTER!</h2>
+      
+      {/* ADDED STAR POINTS DISPLAY */}
+      <div className="mt-2 mb-4 bg-indigo-50 px-6 py-2 rounded-2xl border-2 border-indigo-100 flex items-center gap-3">
+        <span className="text-2xl">⭐</span>
+        <span className="text-3xl font-black text-indigo-600 tabular-nums">{stars}</span>
+        <span className="text-indigo-400 font-bold uppercase text-xs tracking-widest">Points</span>
+      </div>
+
+      <button onClick={restartQuest} className="mt-2 bg-emerald-500 hover:bg-emerald-400 text-white py-3 lg:py-5 px-8 rounded-[1.75rem] shadow-[0_6px_0_0_#065f46] flex items-center gap-3 font-kids">
+        <span className="text-xl font-black">START OVER!</span> 🔄
+      </button>
+    </div>
+  </div>
+)}
 
      <header className="bg-white/10 backdrop-blur-xl py-2 px-6 border-b border-white/20 shadow-lg z-20 shrink-0">
   <div className="max-w-[1100px] mx-auto flex items-center justify-between">
